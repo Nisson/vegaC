@@ -1,0 +1,13 @@
+{
+  "propApp": {
+    "TypePeriode": {
+      "null": "",
+      "JOURNALIERE": "JOURNALIERE",
+      "HEBDOMADAIRE": "HEBDOMADAIRE",
+      "MENSUELLE": "MENSUELLE",
+      "TRIMESTRIELLE": "TRIMESTRIELLE",
+      "SEMESTRIELLE": "SEMESTRIELLE",
+      "ANNUELLE": "ANNUELLE"
+    }
+  }
+}

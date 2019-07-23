@@ -1,0 +1,24 @@
+{
+  "propApp": {
+    "cAEasylink": {
+      "home": {
+        "title": "CAEasylinks",
+        "createLabel": "Créer un nouveau CA Easylink",
+        "createOrEditLabel": "Créer ou éditer un CA Easylink",
+        "notFound": "Aucun CA Easylink trouvé"
+      },
+      "created": "Un nouveau CA Easylink a été créé avec l'identifiant {{ param }}",
+      "updated": "Le CA Easylink avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le CA Easylink avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le CA Easylink {{ id }} ?"
+      },
+      "detail": {
+        "title": "CA Easylink"
+      },
+      "gain": "Gain",
+      "typePeriode": "Type Periode",
+      "contrat": "Contrat"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+    "name": "Amicale",
+    "fields": [
+        {
+            "fieldName": "adress",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "companyname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "logo",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "convention",
+            "otherEntityRelationshipName": "amicale",
+            "relationshipName": "convention"
+        }
+    ],
+    "changelogDate": "20190723090507",
+    "entityTableName": "amicale",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

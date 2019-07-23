@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cAEasylink">
+            <h2><span jhiTranslate="propApp.cAEasylink.detail.title">CA Easylink</span> {{cAEasylink.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="propApp.cAEasylink.gain">Gain</span></dt>
+                <dd>
+                    <span>{{cAEasylink.gain}}</span>
+                </dd>
+                <dt><span jhiTranslate="propApp.cAEasylink.typePeriode">Type Periode</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'propApp.TypePeriode.' + cAEasylink.typePeriode}}">{{cAEasylink.typePeriode}}</span>
+                </dd>
+                <dt><span jhiTranslate="propApp.cAEasylink.contrat">Contrat</span></dt>
+                <dd>
+                    <div *ngIf="cAEasylink.contrat">
+                        <a [routerLink]="['/contrat', cAEasylink.contrat?.id, 'view']">{{cAEasylink.contrat?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ca-easylink', cAEasylink.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

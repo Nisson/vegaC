@@ -1,0 +1,33 @@
+{
+  "propApp": {
+    "convention": {
+      "home": {
+        "title": "Conventions",
+        "createLabel": "Create a new Convention",
+        "createOrEditLabel": "Create or edit a Convention",
+        "notFound": "No Convention found"
+      },
+      "created": "A new Convention is created with identifier {{ param }}",
+      "updated": "A Convention is updated with identifier {{ param }}",
+      "deleted": "A Convention is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Convention {{ id }}?"
+      },
+      "detail": {
+        "title": "Convention"
+      },
+      "titleconvention": "Titleconvention",
+      "amountconvention": "Amountconvention",
+      "description": "Description",
+      "enddate": "Enddate",
+      "startdate": "Startdate",
+      "duration": "Duration",
+      "totalprice": "Totalprice",
+      "amicale": "Amicale",
+      "provider": "Provider",
+      "users": "Users",
+      "contrat": "Contrat",
+      "transaction": "Transaction"
+    }
+  }
+}

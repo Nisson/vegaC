@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-ca-easylink-heading" jhiTranslate="propApp.cAEasylink.home.createOrEditLabel">Create or edit a CA Easylink</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="propApp.cAEasylink.gain" for="field_gain">Gain</label>
+                    <input type="number" class="form-control" name="gain" id="field_gain"
+                           formControlName="gain"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="propApp.cAEasylink.typePeriode" for="field_typePeriode">Type Periode</label>
+                    <select class="form-control" name="typePeriode" formControlName="typePeriode" id="field_typePeriode">
+                        <option value="JOURNALIERE">{{'propApp.TypePeriode.JOURNALIERE' | translate}}</option>
+                        <option value="HEBDOMADAIRE">{{'propApp.TypePeriode.HEBDOMADAIRE' | translate}}</option>
+                        <option value="MENSUELLE">{{'propApp.TypePeriode.MENSUELLE' | translate}}</option>
+                        <option value="TRIMESTRIELLE">{{'propApp.TypePeriode.TRIMESTRIELLE' | translate}}</option>
+                        <option value="SEMESTRIELLE">{{'propApp.TypePeriode.SEMESTRIELLE' | translate}}</option>
+                        <option value="ANNUELLE">{{'propApp.TypePeriode.ANNUELLE' | translate}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="propApp.cAEasylink.contrat" for="field_contrat">Contrat</label>
+                    <select class="form-control" id="field_contrat" name="contrat" formControlName="contrat">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="contratOption.id === editForm.get('contrat').value?.id ? editForm.get('contrat').value : contratOption" *ngFor="let contratOption of contrats; trackBy: trackContratById">{{contratOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

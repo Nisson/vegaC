@@ -1,0 +1,30 @@
+{
+  "propApp": {
+    "users": {
+      "home": {
+        "title": "Users",
+        "createLabel": "Créer un nouveau Users",
+        "createOrEditLabel": "Créer ou éditer un Users",
+        "notFound": "Aucun Users trouvé"
+      },
+      "created": "Un nouveau Users a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Users avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Users avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Users {{ id }} ?"
+      },
+      "detail": {
+        "title": "Users"
+      },
+      "accesslevel": "Accesslevel",
+      "cin": "Cin",
+      "email": "Email",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "login": "Login",
+      "password": "Password",
+      "user": "User",
+      "convention": "Convention"
+    }
+  }
+}

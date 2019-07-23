@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-regle-commission-heading" jhiTranslate="propApp.regleCommission.home.createOrEditLabel">Create or edit a Regle Commission</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="propApp.regleCommission.minCA" for="field_minCA">Min CA</label>
+                    <input type="number" class="form-control" name="minCA" id="field_minCA"
+                           formControlName="minCA"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="propApp.regleCommission.maxCa" for="field_maxCa">Max Ca</label>
+                    <input type="number" class="form-control" name="maxCa" id="field_maxCa"
+                           formControlName="maxCa"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="propApp.regleCommission.typeMontant" for="field_typeMontant">Type Montant</label>
+                    <select class="form-control" name="typeMontant" formControlName="typeMontant" id="field_typeMontant">
+                        <option value="POURCENTAGE">{{'propApp.TypeMontant.POURCENTAGE' | translate}}</option>
+                        <option value="DT">{{'propApp.TypeMontant.DT' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="propApp.regleCommission.montantregle" for="field_montantregle">Montantregle</label>
+                    <input type="number" class="form-control" name="montantregle" id="field_montantregle"
+                           formControlName="montantregle"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="propApp.regleCommission.contrat" for="field_contrat">Contrat</label>
+                    <select class="form-control" id="field_contrat" name="contrat" formControlName="contrat">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="contratOption.id === editForm.get('contrat').value?.id ? editForm.get('contrat').value : contratOption" *ngFor="let contratOption of contrats; trackBy: trackContratById">{{contratOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

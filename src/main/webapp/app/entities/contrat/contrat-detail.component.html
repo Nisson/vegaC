@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="contrat">
+            <h2><span jhiTranslate="propApp.contrat.detail.title">Contrat</span> {{contrat.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="propApp.contrat.datedeb">Datedeb</span></dt>
+                <dd>
+                    <span>{{contrat.datedeb}}</span>
+                </dd>
+                <dt><span jhiTranslate="propApp.contrat.datefin">Datefin</span></dt>
+                <dd>
+                    <span>{{contrat.datefin}}</span>
+                </dd>
+                <dt><span jhiTranslate="propApp.contrat.typePeriode">Type Periode</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'propApp.TypePeriode.' + contrat.typePeriode}}">{{contrat.typePeriode}}</span>
+                </dd>
+                <dt><span jhiTranslate="propApp.contrat.typeCommission">Type Commission</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'propApp.TypeCommission.' + contrat.typeCommission}}">{{contrat.typeCommission}}</span>
+                </dd>
+                <dt><span jhiTranslate="propApp.contrat.typeMontant">Type Montant</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'propApp.TypeMontant.' + contrat.typeMontant}}">{{contrat.typeMontant}}</span>
+                </dd>
+                <dt><span jhiTranslate="propApp.contrat.montantCommission">Montant Commission</span></dt>
+                <dd>
+                    <span>{{contrat.montantCommission}}</span>
+                </dd>
+                <dt><span jhiTranslate="propApp.contrat.parPalier">Par Palier</span></dt>
+                <dd>
+                    <span>{{contrat.parPalier}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/contrat', contrat.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+{
+  "propApp": {
+    "amicale": {
+      "home": {
+        "title": "Amicales",
+        "createLabel": "Créer un nouveau Amicale",
+        "createOrEditLabel": "Créer ou éditer un Amicale",
+        "notFound": "Aucun Amicale trouvé"
+      },
+      "created": "Un nouveau Amicale a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Amicale avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Amicale avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Amicale {{ id }} ?"
+      },
+      "detail": {
+        "title": "Amicale"
+      },
+      "adress": "Adress",
+      "companyname": "Companyname",
+      "logo": "Logo",
+      "convention": "Convention"
+    }
+  }
+}

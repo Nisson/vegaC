@@ -1,0 +1,10 @@
+{
+  "propApp": {
+    "TypeCommission": {
+      "null": "",
+      "FORFAITAIREPARTRANSACTION": "FORFAITAIREPARTRANSACTION",
+      "FORFAITAIREPARPERIODE": "FORFAITAIREPARPERIODE",
+      "POURCENTAGECA": "POURCENTAGECA"
+    }
+  }
+}
