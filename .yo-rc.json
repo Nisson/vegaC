@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.veganet.api",
+      "nativeLanguage": "fr"
+    },
+    "jhipsterVersion": "6.1.2",
+    "applicationType": "monolith",
+    "baseName": "vegac",
+    "packageName": "com.veganet.api",
+    "packageFolder": "com/veganet/api",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "N2M0MjM5YzkxYzZiYTBiYmRmYmFiOTMwOGZkNjNjYTQ2YzE1MjVlNjRlMjAxMTgxOWU3NWVhMWNhYTRiMDE1MDIyNDQ4ZDU2NGRmM2EyZDAwOWI3Zjg5ZGUwM2ViOWIxMjZjNGE3NDRkNzk1YmJmMGZlOTljMjVkNTJmNjFhZTU=",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "simplex",
+    "clientThemeVariant": "dark",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "fr",
+    "languages": [
+      "fr",
+      "en"
+    ]
+  }
+}
