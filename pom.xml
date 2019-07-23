@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.veganet.api</groupId>
-    <artifactId>vegac</artifactId>
+    <artifactId>vega-c</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Vegac</name>
+    <name>Vega C</name>
 
     <repositories>
         <!-- TODO To remove after final JHipster release -->
@@ -564,8 +564,8 @@
                         <changeLogFile>${project.basedir}/src/main/resources/config/liquibase/master.xml</changeLogFile>
                         <diffChangeLogFile>${project.basedir}/src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
                         <driver>com.mysql.cj.jdbc.Driver</driver>
-                        <url>jdbc:mysql://localhost:3306/vegac</url>
-                        <defaultSchemaName>vegac</defaultSchemaName>
+                        <url>jdbc:mysql://localhost:3306/vegaC</url>
+                        <defaultSchemaName>vegaC</defaultSchemaName>
                         <username>root</username>
                         <password></password>
                         <referenceUrl>hibernate:spring:com.veganet.api.domain?dialect=org.hibernate.dialect.MySQL5InnoDBDialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>

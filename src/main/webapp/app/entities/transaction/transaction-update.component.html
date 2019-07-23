@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-transaction-heading" jhiTranslate="vegaCApp.transaction.home.createOrEditLabel">Create or edit a Transaction</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.transaction.activationstatus" for="field_activationstatus">Activationstatus</label>
+                    <input type="text" class="form-control" name="activationstatus" id="field_activationstatus"
+                           formControlName="activationstatus"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.transaction.address" for="field_address">Address</label>
+                    <input type="text" class="form-control" name="address" id="field_address"
+                           formControlName="address"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.transaction.amountsubstraction" for="field_amountsubstraction">Amountsubstraction</label>
+                    <input type="number" class="form-control" name="amountsubstraction" id="field_amountsubstraction"
+                           formControlName="amountsubstraction"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.transaction.startdate" for="field_startdate">Startdate</label>
+                    <div class="input-group">
+                        <input id="field_startdate" type="text" class="form-control" name="startdate" ngbDatepicker  #startdateDp="ngbDatepicker" formControlName="startdate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="startdateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.transaction.enddate" for="field_enddate">Enddate</label>
+                    <div class="input-group">
+                        <input id="field_enddate" type="text" class="form-control" name="enddate" ngbDatepicker  #enddateDp="ngbDatepicker" formControlName="enddate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="enddateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.transaction.totalamount" for="field_totalamount">Totalamount</label>
+                    <input type="number" class="form-control" name="totalamount" id="field_totalamount"
+                           formControlName="totalamount"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.transaction.totalpaid" for="field_totalpaid">Totalpaid</label>
+                    <input type="number" class="form-control" name="totalpaid" id="field_totalpaid"
+                           formControlName="totalpaid"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.transaction.advancedamount" for="field_advancedamount">Advancedamount</label>
+                    <input type="number" class="form-control" name="advancedamount" id="field_advancedamount"
+                           formControlName="advancedamount"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.transaction.convention" for="field_convention">Convention</label>
+                    <select class="form-control" id="field_convention" name="convention" formControlName="convention">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="conventionOption.id === editForm.get('convention').value?.id ? editForm.get('convention').value : conventionOption" *ngFor="let conventionOption of conventions; trackBy: trackConventionById">{{conventionOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

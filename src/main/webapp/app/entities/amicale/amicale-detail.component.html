@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="amicale">
+            <h2><span jhiTranslate="vegaCApp.amicale.detail.title">Amicale</span> {{amicale.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="vegaCApp.amicale.adress">Adress</span></dt>
+                <dd>
+                    <span>{{amicale.adress}}</span>
+                </dd>
+                <dt><span jhiTranslate="vegaCApp.amicale.companyname">Companyname</span></dt>
+                <dd>
+                    <span>{{amicale.companyname}}</span>
+                </dd>
+                <dt><span jhiTranslate="vegaCApp.amicale.logo">Logo</span></dt>
+                <dd>
+                    <span>{{amicale.logo}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/amicale', amicale.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

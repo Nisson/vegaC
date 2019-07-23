@@ -1,0 +1,59 @@
+{
+    "name": "Contrat",
+    "fields": [
+        {
+            "fieldName": "datedeb",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "datefin",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "typePeriode",
+            "fieldType": "TypePeriode",
+            "fieldValues": "JOURNALIERE,HEBDOMADAIRE,MENSUELLE,TRIMESTRIELLE,SEMESTRIELLE,ANNUELLE"
+        },
+        {
+            "fieldName": "typeCommission",
+            "fieldType": "TypeCommission",
+            "fieldValues": "FORFAITAIREPARTRANSACTION,FORFAITAIREPARPERIODE,POURCENTAGECA"
+        },
+        {
+            "fieldName": "typeMontant",
+            "fieldType": "TypeMontant",
+            "fieldValues": "POURCENTAGE,DT"
+        },
+        {
+            "fieldName": "montantCommission",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "parPalier",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "regleCommission",
+            "otherEntityRelationshipName": "contrat",
+            "relationshipName": "regleCommission"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "cAEasylink",
+            "otherEntityRelationshipName": "contrat",
+            "relationshipName": "cAEasylink"
+        }
+    ],
+    "changelogDate": "20190723130303",
+    "entityTableName": "contrat",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

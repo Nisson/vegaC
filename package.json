@@ -1,7 +1,7 @@
 {
-  "name": "vegac",
+  "name": "vega-c",
   "version": "0.0.0",
-  "description": "Description for vegac",
+  "description": "Description for vegaC",
   "private": true,
   "license": "UNLICENSED",
   "cacheDirectories": [

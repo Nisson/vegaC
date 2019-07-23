@@ -6,7 +6,7 @@
     },
     "jhipsterVersion": "6.1.2",
     "applicationType": "monolith",
-    "baseName": "vegac",
+    "baseName": "vegaC",
     "packageName": "com.veganet.api",
     "packageFolder": "com/veganet/api",
     "serverPort": "8080",
@@ -22,12 +22,12 @@
     "serviceDiscoveryType": false,
     "buildTool": "maven",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "N2M0MjM5YzkxYzZiYTBiYmRmYmFiOTMwOGZkNjNjYTQ2YzE1MjVlNjRlMjAxMTgxOWU3NWVhMWNhYTRiMDE1MDIyNDQ4ZDU2NGRmM2EyZDAwOWI3Zjg5ZGUwM2ViOWIxMjZjNGE3NDRkNzk1YmJmMGZlOTljMjVkNTJmNjFhZTU=",
+    "jwtSecretKey": "YWRjNDYxMGUyMmZkMGQ1NzMwYmM2ODVlNmIwMTM3Zjc5MWI2OTMzYjBlNzg3MjJkMDk1ZDM1ZjFlMzM1NWY2Yzk2YmJlYjMwYmEyNDc2ZjEzNGY3NjZjMzEzZmVjYmMzYTQ5ZDFjMzU4MTMyNzUwNGRjZGQ2YjQwMTFkNTBiNDc=",
     "useSass": true,
     "clientPackageManager": "npm",
     "clientFramework": "angularX",
     "clientTheme": "simplex",
-    "clientThemeVariant": "dark",
+    "clientThemeVariant": "light",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "entitySuffix": "",
@@ -35,9 +35,6 @@
     "otherModules": [],
     "enableTranslation": true,
     "nativeLanguage": "fr",
-    "languages": [
-      "fr",
-      "en"
-    ]
+    "languages": ["fr", "en"]
   }
 }
