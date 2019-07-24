@@ -78,7 +78,7 @@ entity Convention {
     totalprice Double
 }
 relationship OneToOne {
-    Convention {Contrat} to Contrat
+    Contrat {Convention} to Convention
 
 }
 
