@@ -50,6 +50,10 @@ public class Contrat implements Serializable {
     @Column(name = "par_palier")
     private Boolean parPalier;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Convention convention;
+
     @OneToMany(mappedBy = "contrat")
     private Set<RegleCommission> regleCommissions = new HashSet<>();
 
@@ -154,6 +158,19 @@ public class Contrat implements Serializable {
 
     public void setParPalier(Boolean parPalier) {
         this.parPalier = parPalier;
+    }
+
+    public Convention getConvention() {
+        return convention;
+    }
+
+    public Contrat convention(Convention convention) {
+        this.convention = convention;
+        return this;
+    }
+
+    public void setConvention(Convention convention) {
+        this.convention = convention;
     }
 
     public Set<RegleCommission> getRegleCommissions() {

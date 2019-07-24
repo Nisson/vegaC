@@ -45,12 +45,6 @@
                         <a [routerLink]="['/provider', convention.provider?.id, 'view']">{{convention.provider?.id}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="vegaCApp.convention.contrat">Contrat</span></dt>
-                <dd>
-                    <div *ngIf="convention.contrat">
-                        <a [routerLink]="['/contrat', convention.contrat?.id, 'view']">{{convention.contrat?.id}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

@@ -35,6 +35,14 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "convention",
+            "otherEntityRelationshipName": "contrat",
+            "relationshipName": "convention",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
             "relationshipType": "one-to-many",
             "otherEntityName": "regleCommission",
             "otherEntityRelationshipName": "contrat",
@@ -47,7 +55,7 @@
             "relationshipName": "cAEasylink"
         }
     ],
-    "changelogDate": "20190723130303",
+    "changelogDate": "20190724111306",
     "entityTableName": "contrat",
     "dto": "no",
     "pagination": "no",

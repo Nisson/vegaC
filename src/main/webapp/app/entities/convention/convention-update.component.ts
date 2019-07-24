@@ -12,8 +12,6 @@ import { IAmicale } from 'app/shared/model/amicale.model';
 import { AmicaleService } from 'app/entities/amicale';
 import { IProvider } from 'app/shared/model/provider.model';
 import { ProviderService } from 'app/entities/provider';
-import { IContrat } from 'app/shared/model/contrat.model';
-import { ContratService } from 'app/entities/contrat';
 
 @Component({
   selector: 'jhi-convention-update',
@@ -25,8 +23,6 @@ export class ConventionUpdateComponent implements OnInit {
   amicales: IAmicale[];
 
   providers: IProvider[];
-
-  contrats: IContrat[];
   enddateDp: any;
   startdateDp: any;
 
@@ -40,8 +36,7 @@ export class ConventionUpdateComponent implements OnInit {
     duration: [],
     totalprice: [],
     amicale: [],
-    provider: [],
-    contrat: []
+    provider: []
   });
 
   constructor(
@@ -49,7 +44,6 @@ export class ConventionUpdateComponent implements OnInit {
     protected conventionService: ConventionService,
     protected amicaleService: AmicaleService,
     protected providerService: ProviderService,
-    protected contratService: ContratService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -73,31 +67,6 @@ export class ConventionUpdateComponent implements OnInit {
         map((response: HttpResponse<IProvider[]>) => response.body)
       )
       .subscribe((res: IProvider[]) => (this.providers = res), (res: HttpErrorResponse) => this.onError(res.message));
-    this.contratService
-      .query({ filter: 'convention-is-null' })
-      .pipe(
-        filter((mayBeOk: HttpResponse<IContrat[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IContrat[]>) => response.body)
-      )
-      .subscribe(
-        (res: IContrat[]) => {
-          if (!this.editForm.get('contrat').value || !this.editForm.get('contrat').value.id) {
-            this.contrats = res;
-          } else {
-            this.contratService
-              .find(this.editForm.get('contrat').value.id)
-              .pipe(
-                filter((subResMayBeOk: HttpResponse<IContrat>) => subResMayBeOk.ok),
-                map((subResponse: HttpResponse<IContrat>) => subResponse.body)
-              )
-              .subscribe(
-                (subRes: IContrat) => (this.contrats = [subRes].concat(res)),
-                (subRes: HttpErrorResponse) => this.onError(subRes.message)
-              );
-          }
-        },
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
   }
 
   updateForm(convention: IConvention) {
@@ -111,8 +80,7 @@ export class ConventionUpdateComponent implements OnInit {
       duration: convention.duration,
       totalprice: convention.totalprice,
       amicale: convention.amicale,
-      provider: convention.provider,
-      contrat: convention.contrat
+      provider: convention.provider
     });
   }
 
@@ -142,8 +110,7 @@ export class ConventionUpdateComponent implements OnInit {
       duration: this.editForm.get(['duration']).value,
       totalprice: this.editForm.get(['totalprice']).value,
       amicale: this.editForm.get(['amicale']).value,
-      provider: this.editForm.get(['provider']).value,
-      contrat: this.editForm.get(['contrat']).value
+      provider: this.editForm.get(['provider']).value
     };
   }
 
@@ -168,10 +135,6 @@ export class ConventionUpdateComponent implements OnInit {
   }
 
   trackProviderById(index: number, item: IProvider) {
-    return item.id;
-  }
-
-  trackContratById(index: number, item: IContrat) {
     return item.id;
   }
 }

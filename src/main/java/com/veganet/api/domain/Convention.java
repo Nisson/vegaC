@@ -50,10 +50,6 @@ public class Convention implements Serializable {
     @JsonIgnoreProperties("conventions")
     private Provider provider;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Contrat contrat;
-
     @OneToMany(mappedBy = "convention")
     private Set<Transaction> transactions = new HashSet<>();
 
@@ -181,19 +177,6 @@ public class Convention implements Serializable {
 
     public void setProvider(Provider provider) {
         this.provider = provider;
-    }
-
-    public Contrat getContrat() {
-        return contrat;
-    }
-
-    public Convention contrat(Contrat contrat) {
-        this.contrat = contrat;
-        return this;
-    }
-
-    public void setContrat(Contrat contrat) {
-        this.contrat = contrat;
     }
 
     public Set<Transaction> getTransactions() {

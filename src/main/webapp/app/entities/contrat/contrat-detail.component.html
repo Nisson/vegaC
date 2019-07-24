@@ -33,6 +33,12 @@
                 <dd>
                     <span>{{contrat.parPalier}}</span>
                 </dd>
+                <dt><span jhiTranslate="vegaCApp.contrat.convention">Convention</span></dt>
+                <dd>
+                    <div *ngIf="contrat.convention">
+                        <a [routerLink]="['/convention', contrat.convention?.id, 'view']">{{contrat.convention?.id}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

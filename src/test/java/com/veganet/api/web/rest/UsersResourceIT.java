@@ -33,27 +33,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = VegaCApp.class)
 public class UsersResourceIT {
 
-    private static final Integer DEFAULT_ACCESSLEVEL = 1;
-    private static final Integer UPDATED_ACCESSLEVEL = 2;
-
-    private static final Integer DEFAULT_CIN = 1;
-    private static final Integer UPDATED_CIN = 2;
-
-    private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
-    private static final String UPDATED_EMAIL = "BBBBBBBBBB";
-
-    private static final String DEFAULT_FIRSTNAME = "AAAAAAAAAA";
-    private static final String UPDATED_FIRSTNAME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_LASTNAME = "AAAAAAAAAA";
-    private static final String UPDATED_LASTNAME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_LOGIN = "AAAAAAAAAA";
-    private static final String UPDATED_LOGIN = "BBBBBBBBBB";
-
-    private static final String DEFAULT_PASSWORD = "AAAAAAAAAA";
-    private static final String UPDATED_PASSWORD = "BBBBBBBBBB";
-
     @Autowired
     private UsersRepository usersRepository;
 
@@ -95,14 +74,7 @@ public class UsersResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Users createEntity(EntityManager em) {
-        Users users = new Users()
-            .accesslevel(DEFAULT_ACCESSLEVEL)
-            .cin(DEFAULT_CIN)
-            .email(DEFAULT_EMAIL)
-            .firstname(DEFAULT_FIRSTNAME)
-            .lastname(DEFAULT_LASTNAME)
-            .login(DEFAULT_LOGIN)
-            .password(DEFAULT_PASSWORD);
+        Users users = new Users();
         return users;
     }
     /**
@@ -112,14 +84,7 @@ public class UsersResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Users createUpdatedEntity(EntityManager em) {
-        Users users = new Users()
-            .accesslevel(UPDATED_ACCESSLEVEL)
-            .cin(UPDATED_CIN)
-            .email(UPDATED_EMAIL)
-            .firstname(UPDATED_FIRSTNAME)
-            .lastname(UPDATED_LASTNAME)
-            .login(UPDATED_LOGIN)
-            .password(UPDATED_PASSWORD);
+        Users users = new Users();
         return users;
     }
 
@@ -143,13 +108,6 @@ public class UsersResourceIT {
         List<Users> usersList = usersRepository.findAll();
         assertThat(usersList).hasSize(databaseSizeBeforeCreate + 1);
         Users testUsers = usersList.get(usersList.size() - 1);
-        assertThat(testUsers.getAccesslevel()).isEqualTo(DEFAULT_ACCESSLEVEL);
-        assertThat(testUsers.getCin()).isEqualTo(DEFAULT_CIN);
-        assertThat(testUsers.getEmail()).isEqualTo(DEFAULT_EMAIL);
-        assertThat(testUsers.getFirstname()).isEqualTo(DEFAULT_FIRSTNAME);
-        assertThat(testUsers.getLastname()).isEqualTo(DEFAULT_LASTNAME);
-        assertThat(testUsers.getLogin()).isEqualTo(DEFAULT_LOGIN);
-        assertThat(testUsers.getPassword()).isEqualTo(DEFAULT_PASSWORD);
     }
 
     @Test
@@ -182,14 +140,7 @@ public class UsersResourceIT {
         restUsersMockMvc.perform(get("/api/users?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(users.getId().intValue())))
-            .andExpect(jsonPath("$.[*].accesslevel").value(hasItem(DEFAULT_ACCESSLEVEL)))
-            .andExpect(jsonPath("$.[*].cin").value(hasItem(DEFAULT_CIN)))
-            .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
-            .andExpect(jsonPath("$.[*].firstname").value(hasItem(DEFAULT_FIRSTNAME.toString())))
-            .andExpect(jsonPath("$.[*].lastname").value(hasItem(DEFAULT_LASTNAME.toString())))
-            .andExpect(jsonPath("$.[*].login").value(hasItem(DEFAULT_LOGIN.toString())))
-            .andExpect(jsonPath("$.[*].password").value(hasItem(DEFAULT_PASSWORD.toString())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(users.getId().intValue())));
     }
     
     @Test
@@ -202,14 +153,7 @@ public class UsersResourceIT {
         restUsersMockMvc.perform(get("/api/users/{id}", users.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(users.getId().intValue()))
-            .andExpect(jsonPath("$.accesslevel").value(DEFAULT_ACCESSLEVEL))
-            .andExpect(jsonPath("$.cin").value(DEFAULT_CIN))
-            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
-            .andExpect(jsonPath("$.firstname").value(DEFAULT_FIRSTNAME.toString()))
-            .andExpect(jsonPath("$.lastname").value(DEFAULT_LASTNAME.toString()))
-            .andExpect(jsonPath("$.login").value(DEFAULT_LOGIN.toString()))
-            .andExpect(jsonPath("$.password").value(DEFAULT_PASSWORD.toString()));
+            .andExpect(jsonPath("$.id").value(users.getId().intValue()));
     }
 
     @Test
@@ -232,14 +176,6 @@ public class UsersResourceIT {
         Users updatedUsers = usersRepository.findById(users.getId()).get();
         // Disconnect from session so that the updates on updatedUsers are not directly saved in db
         em.detach(updatedUsers);
-        updatedUsers
-            .accesslevel(UPDATED_ACCESSLEVEL)
-            .cin(UPDATED_CIN)
-            .email(UPDATED_EMAIL)
-            .firstname(UPDATED_FIRSTNAME)
-            .lastname(UPDATED_LASTNAME)
-            .login(UPDATED_LOGIN)
-            .password(UPDATED_PASSWORD);
 
         restUsersMockMvc.perform(put("/api/users")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -250,13 +186,6 @@ public class UsersResourceIT {
         List<Users> usersList = usersRepository.findAll();
         assertThat(usersList).hasSize(databaseSizeBeforeUpdate);
         Users testUsers = usersList.get(usersList.size() - 1);
-        assertThat(testUsers.getAccesslevel()).isEqualTo(UPDATED_ACCESSLEVEL);
-        assertThat(testUsers.getCin()).isEqualTo(UPDATED_CIN);
-        assertThat(testUsers.getEmail()).isEqualTo(UPDATED_EMAIL);
-        assertThat(testUsers.getFirstname()).isEqualTo(UPDATED_FIRSTNAME);
-        assertThat(testUsers.getLastname()).isEqualTo(UPDATED_LASTNAME);
-        assertThat(testUsers.getLogin()).isEqualTo(UPDATED_LOGIN);
-        assertThat(testUsers.getPassword()).isEqualTo(UPDATED_PASSWORD);
     }
 
     @Test

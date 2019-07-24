@@ -27,7 +27,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20190723130302",
+    "changelogDate": "20190724111305",
     "entityTableName": "regle_commission",
     "dto": "no",
     "pagination": "no",

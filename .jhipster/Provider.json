@@ -30,7 +30,7 @@
             "relationshipName": "convention"
         }
     ],
-    "changelogDate": "20190723130308",
+    "changelogDate": "20190724111311",
     "entityTableName": "provider",
     "dto": "no",
     "pagination": "no",

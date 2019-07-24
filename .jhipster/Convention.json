@@ -44,21 +44,13 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "contrat",
-            "otherEntityRelationshipName": "convention",
-            "relationshipName": "contrat",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
             "relationshipType": "one-to-many",
             "otherEntityName": "transaction",
             "otherEntityRelationshipName": "convention",
             "relationshipName": "transaction"
         }
     ],
-    "changelogDate": "20190723130309",
+    "changelogDate": "20190724111312",
     "entityTableName": "convention",
     "dto": "no",
     "pagination": "no",

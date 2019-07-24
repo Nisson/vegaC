@@ -23,7 +23,7 @@ describe('Service Tests', () => {
       service = injector.get(UsersService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Users(0, 0, 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new Users(0);
     });
 
     describe('Service methods', () => {
@@ -57,18 +57,7 @@ describe('Service Tests', () => {
       });
 
       it('should update a Users', async () => {
-        const returnedFromService = Object.assign(
-          {
-            accesslevel: 1,
-            cin: 1,
-            email: 'BBBBBB',
-            firstname: 'BBBBBB',
-            lastname: 'BBBBBB',
-            login: 'BBBBBB',
-            password: 'BBBBBB'
-          },
-          elemDefault
-        );
+        const returnedFromService = Object.assign({}, elemDefault);
 
         const expected = Object.assign({}, returnedFromService);
         service
@@ -81,18 +70,7 @@ describe('Service Tests', () => {
       });
 
       it('should return a list of Users', async () => {
-        const returnedFromService = Object.assign(
-          {
-            accesslevel: 1,
-            cin: 1,
-            email: 'BBBBBB',
-            firstname: 'BBBBBB',
-            lastname: 'BBBBBB',
-            login: 'BBBBBB',
-            password: 'BBBBBB'
-          },
-          elemDefault
-        );
+        const returnedFromService = Object.assign({}, elemDefault);
         const expected = Object.assign({}, returnedFromService);
         service
           .query(expected)

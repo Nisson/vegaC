@@ -67,13 +67,6 @@
                         <option [ngValue]="providerOption.id === editForm.get('provider').value?.id ? editForm.get('provider').value : providerOption" *ngFor="let providerOption of providers; trackBy: trackProviderById">{{providerOption.id}}</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="vegaCApp.convention.contrat" for="field_contrat">Contrat</label>
-                    <select class="form-control" id="field_contrat" name="contrat" formControlName="contrat">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="contratOption.id === editForm.get('contrat').value?.id ? editForm.get('contrat').value : contratOption" *ngFor="let contratOption of contrats; trackBy: trackContratById">{{contratOption.id}}</option>
-                    </select>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

@@ -1,7 +1,6 @@
 import { Moment } from 'moment';
 import { IAmicale } from 'app/shared/model/amicale.model';
 import { IProvider } from 'app/shared/model/provider.model';
-import { IContrat } from 'app/shared/model/contrat.model';
 import { ITransaction } from 'app/shared/model/transaction.model';
 
 export interface IConvention {
@@ -15,7 +14,6 @@ export interface IConvention {
   totalprice?: number;
   amicale?: IAmicale;
   provider?: IProvider;
-  contrat?: IContrat;
   transactions?: ITransaction[];
 }
 
@@ -31,7 +29,6 @@ export class Convention implements IConvention {
     public totalprice?: number,
     public amicale?: IAmicale,
     public provider?: IProvider,
-    public contrat?: IContrat,
     public transactions?: ITransaction[]
   ) {}
 }

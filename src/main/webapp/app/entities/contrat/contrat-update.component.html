@@ -64,6 +64,13 @@
                            formControlName="parPalier"/>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.contrat.convention" for="field_convention">Convention</label>
+                    <select class="form-control" id="field_convention" name="convention" formControlName="convention">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="conventionOption.id === editForm.get('convention').value?.id ? editForm.get('convention').value : conventionOption" *ngFor="let conventionOption of conventions; trackBy: trackConventionById">{{conventionOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

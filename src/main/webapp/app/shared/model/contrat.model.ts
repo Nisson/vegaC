@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IConvention } from 'app/shared/model/convention.model';
 import { IRegleCommission } from 'app/shared/model/regle-commission.model';
 import { ICAEasylink } from 'app/shared/model/ca-easylink.model';
 
@@ -31,6 +32,7 @@ export interface IContrat {
   typeMontant?: TypeMontant;
   montantCommission?: number;
   parPalier?: boolean;
+  convention?: IConvention;
   regleCommissions?: IRegleCommission[];
   cAEasylinks?: ICAEasylink[];
 }
@@ -45,6 +47,7 @@ export class Contrat implements IContrat {
     public typeMontant?: TypeMontant,
     public montantCommission?: number,
     public parPalier?: boolean,
+    public convention?: IConvention,
     public regleCommissions?: IRegleCommission[],
     public cAEasylinks?: ICAEasylink[]
   ) {

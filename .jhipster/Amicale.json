@@ -22,7 +22,7 @@
             "relationshipName": "convention"
         }
     ],
-    "changelogDate": "20190723130307",
+    "changelogDate": "20190724111310",
     "entityTableName": "amicale",
     "dto": "no",
     "pagination": "no",

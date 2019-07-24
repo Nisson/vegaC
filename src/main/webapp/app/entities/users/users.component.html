@@ -18,30 +18,12 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="vegaCApp.users.accesslevel">Accesslevel</span></th>
-            <th><span jhiTranslate="vegaCApp.users.cin">Cin</span></th>
-            <th><span jhiTranslate="vegaCApp.users.email">Email</span></th>
-            <th><span jhiTranslate="vegaCApp.users.firstname">Firstname</span></th>
-            <th><span jhiTranslate="vegaCApp.users.lastname">Lastname</span></th>
-            <th><span jhiTranslate="vegaCApp.users.login">Login</span></th>
-            <th><span jhiTranslate="vegaCApp.users.password">Password</span></th>
-            <th><span jhiTranslate="vegaCApp.users.user">User</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let users of users ;trackBy: trackId">
                 <td><a [routerLink]="['/users', users.id, 'view' ]">{{users.id}}</a></td>
-                <td>{{users.accesslevel}}</td>
-                <td>{{users.cin}}</td>
-                <td>{{users.email}}</td>
-                <td>{{users.firstname}}</td>
-                <td>{{users.lastname}}</td>
-                <td>{{users.login}}</td>
-                <td>{{users.password}}</td>
-                <td>
-                    {{users.user?.id}}
-                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

@@ -15,16 +15,7 @@
       },
       "detail": {
         "title": "Users"
-      },
-      "accesslevel": "Accesslevel",
-      "cin": "Cin",
-      "email": "Email",
-      "firstname": "Firstname",
-      "lastname": "Lastname",
-      "login": "Login",
-      "password": "Password",
-      "user": "User",
-      "convention": "Convention"
+      }
     }
   }
 }
