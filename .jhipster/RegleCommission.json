@@ -15,6 +15,11 @@
             "fieldValues": "POURCENTAGE,DT"
         },
         {
+            "fieldName": "typeCommission",
+            "fieldType": "TypeCommission",
+            "fieldValues": "FORFAITAIREPARTRANSACTION,FORFAITAIREPARPERIODE,POURCENTAGECA"
+        },
+        {
             "fieldName": "montantregle",
             "fieldType": "Double"
         }
@@ -27,7 +32,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20190724111305",
+    "changelogDate": "20190724112930",
     "entityTableName": "regle_commission",
     "dto": "no",
     "pagination": "no",

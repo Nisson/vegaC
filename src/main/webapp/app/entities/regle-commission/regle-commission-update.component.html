@@ -27,6 +27,14 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.regleCommission.typeCommission" for="field_typeCommission">Type Commission</label>
+                    <select class="form-control" name="typeCommission" formControlName="typeCommission" id="field_typeCommission">
+                        <option value="FORFAITAIREPARTRANSACTION">{{'vegaCApp.TypeCommission.FORFAITAIREPARTRANSACTION' | translate}}</option>
+                        <option value="FORFAITAIREPARPERIODE">{{'vegaCApp.TypeCommission.FORFAITAIREPARPERIODE' | translate}}</option>
+                        <option value="POURCENTAGECA">{{'vegaCApp.TypeCommission.POURCENTAGECA' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="vegaCApp.regleCommission.montantregle" for="field_montantregle">Montantregle</label>
                     <input type="number" class="form-control" name="montantregle" id="field_montantregle"
                            formControlName="montantregle"/>

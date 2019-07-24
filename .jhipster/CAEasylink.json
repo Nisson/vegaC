@@ -19,7 +19,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20190724111307",
+    "changelogDate": "20190724112932",
     "entityTableName": "ca_easylink",
     "dto": "no",
     "pagination": "no",

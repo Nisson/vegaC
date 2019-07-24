@@ -16,6 +16,7 @@ entity RegleCommission
     minCA Double,
     maxCa Double,
     typeMontant TypeMontant,
+    typeCommission TypeCommission,
     montantregle Double
 }
 entity Contrat
@@ -43,7 +44,7 @@ entity Transaction {
 	totalamount    Double,
 	totalpaid      Double,
 	advancedamount Double
-	
+
 }
 
 entity Offer {
@@ -52,7 +53,7 @@ entity Offer {
 	discount Integer,
 	maxoffer Integer,
 	priceoffer Double
-	
+
 }
 entity Amicale {
     adress String,
@@ -79,7 +80,6 @@ entity Convention {
 }
 relationship OneToOne {
     Contrat {convention} to Convention
-
 }
 
 relationship OneToMany {
@@ -90,7 +90,8 @@ relationship OneToMany {
     Provider {convention} to Convention ,
     Contrat{regleCommission} to RegleCommission,
     Contrat{cAEasylink} to CAEasylink
-	
+
 }
+
 
 

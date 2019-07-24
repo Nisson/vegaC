@@ -19,6 +19,7 @@
       "minCA": "Min CA",
       "maxCa": "Max Ca",
       "typeMontant": "Type Montant",
+      "typeCommission": "Type Commission",
       "montantregle": "Montantregle",
       "contrat": "Contrat"
     }

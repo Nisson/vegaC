@@ -21,6 +21,7 @@
             <th><span jhiTranslate="vegaCApp.regleCommission.minCA">Min CA</span></th>
             <th><span jhiTranslate="vegaCApp.regleCommission.maxCa">Max Ca</span></th>
             <th><span jhiTranslate="vegaCApp.regleCommission.typeMontant">Type Montant</span></th>
+            <th><span jhiTranslate="vegaCApp.regleCommission.typeCommission">Type Commission</span></th>
             <th><span jhiTranslate="vegaCApp.regleCommission.montantregle">Montantregle</span></th>
             <th><span jhiTranslate="vegaCApp.regleCommission.contrat">Contrat</span></th>
             <th></th>
@@ -32,6 +33,7 @@
                 <td>{{regleCommission.minCA}}</td>
                 <td>{{regleCommission.maxCa}}</td>
                 <td jhiTranslate="{{'vegaCApp.TypeMontant.' + regleCommission.typeMontant}}">{{regleCommission.typeMontant}}</td>
+                <td jhiTranslate="{{'vegaCApp.TypeCommission.' + regleCommission.typeCommission}}">{{regleCommission.typeCommission}}</td>
                 <td>{{regleCommission.montantregle}}</td>
                 <td>
                     <div *ngIf="regleCommission.contrat">

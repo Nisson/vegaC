@@ -28,6 +28,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.veganet.api.domain.enumeration.TypeMontant;
+import com.veganet.api.domain.enumeration.TypeCommission;
 /**
  * Integration tests for the {@Link RegleCommissionResource} REST controller.
  */
@@ -42,6 +43,9 @@ public class RegleCommissionResourceIT {
 
     private static final TypeMontant DEFAULT_TYPE_MONTANT = TypeMontant.POURCENTAGE;
     private static final TypeMontant UPDATED_TYPE_MONTANT = TypeMontant.DT;
+
+    private static final TypeCommission DEFAULT_TYPE_COMMISSION = TypeCommission.FORFAITAIREPARTRANSACTION;
+    private static final TypeCommission UPDATED_TYPE_COMMISSION = TypeCommission.FORFAITAIREPARPERIODE;
 
     private static final Double DEFAULT_MONTANTREGLE = 1D;
     private static final Double UPDATED_MONTANTREGLE = 2D;
@@ -91,6 +95,7 @@ public class RegleCommissionResourceIT {
             .minCA(DEFAULT_MIN_CA)
             .maxCa(DEFAULT_MAX_CA)
             .typeMontant(DEFAULT_TYPE_MONTANT)
+            .typeCommission(DEFAULT_TYPE_COMMISSION)
             .montantregle(DEFAULT_MONTANTREGLE);
         return regleCommission;
     }
@@ -105,6 +110,7 @@ public class RegleCommissionResourceIT {
             .minCA(UPDATED_MIN_CA)
             .maxCa(UPDATED_MAX_CA)
             .typeMontant(UPDATED_TYPE_MONTANT)
+            .typeCommission(UPDATED_TYPE_COMMISSION)
             .montantregle(UPDATED_MONTANTREGLE);
         return regleCommission;
     }
@@ -132,6 +138,7 @@ public class RegleCommissionResourceIT {
         assertThat(testRegleCommission.getMinCA()).isEqualTo(DEFAULT_MIN_CA);
         assertThat(testRegleCommission.getMaxCa()).isEqualTo(DEFAULT_MAX_CA);
         assertThat(testRegleCommission.getTypeMontant()).isEqualTo(DEFAULT_TYPE_MONTANT);
+        assertThat(testRegleCommission.getTypeCommission()).isEqualTo(DEFAULT_TYPE_COMMISSION);
         assertThat(testRegleCommission.getMontantregle()).isEqualTo(DEFAULT_MONTANTREGLE);
     }
 
@@ -169,6 +176,7 @@ public class RegleCommissionResourceIT {
             .andExpect(jsonPath("$.[*].minCA").value(hasItem(DEFAULT_MIN_CA.doubleValue())))
             .andExpect(jsonPath("$.[*].maxCa").value(hasItem(DEFAULT_MAX_CA.doubleValue())))
             .andExpect(jsonPath("$.[*].typeMontant").value(hasItem(DEFAULT_TYPE_MONTANT.toString())))
+            .andExpect(jsonPath("$.[*].typeCommission").value(hasItem(DEFAULT_TYPE_COMMISSION.toString())))
             .andExpect(jsonPath("$.[*].montantregle").value(hasItem(DEFAULT_MONTANTREGLE.doubleValue())));
     }
     
@@ -186,6 +194,7 @@ public class RegleCommissionResourceIT {
             .andExpect(jsonPath("$.minCA").value(DEFAULT_MIN_CA.doubleValue()))
             .andExpect(jsonPath("$.maxCa").value(DEFAULT_MAX_CA.doubleValue()))
             .andExpect(jsonPath("$.typeMontant").value(DEFAULT_TYPE_MONTANT.toString()))
+            .andExpect(jsonPath("$.typeCommission").value(DEFAULT_TYPE_COMMISSION.toString()))
             .andExpect(jsonPath("$.montantregle").value(DEFAULT_MONTANTREGLE.doubleValue()));
     }
 
@@ -213,6 +222,7 @@ public class RegleCommissionResourceIT {
             .minCA(UPDATED_MIN_CA)
             .maxCa(UPDATED_MAX_CA)
             .typeMontant(UPDATED_TYPE_MONTANT)
+            .typeCommission(UPDATED_TYPE_COMMISSION)
             .montantregle(UPDATED_MONTANTREGLE);
 
         restRegleCommissionMockMvc.perform(put("/api/regle-commissions")
@@ -227,6 +237,7 @@ public class RegleCommissionResourceIT {
         assertThat(testRegleCommission.getMinCA()).isEqualTo(UPDATED_MIN_CA);
         assertThat(testRegleCommission.getMaxCa()).isEqualTo(UPDATED_MAX_CA);
         assertThat(testRegleCommission.getTypeMontant()).isEqualTo(UPDATED_TYPE_MONTANT);
+        assertThat(testRegleCommission.getTypeCommission()).isEqualTo(UPDATED_TYPE_COMMISSION);
         assertThat(testRegleCommission.getMontantregle()).isEqualTo(UPDATED_MONTANTREGLE);
     }
 

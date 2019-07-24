@@ -50,7 +50,7 @@
             "relationshipName": "transaction"
         }
     ],
-    "changelogDate": "20190724111312",
+    "changelogDate": "20190724112937",
     "entityTableName": "convention",
     "dto": "no",
     "pagination": "no",

@@ -7,6 +7,8 @@ import java.io.Serializable;
 
 import com.veganet.api.domain.enumeration.TypeMontant;
 
+import com.veganet.api.domain.enumeration.TypeCommission;
+
 /**
  * A RegleCommission.
  */
@@ -29,6 +31,10 @@ public class RegleCommission implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "type_montant")
     private TypeMontant typeMontant;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type_commission")
+    private TypeCommission typeCommission;
 
     @Column(name = "montantregle")
     private Double montantregle;
@@ -85,6 +91,19 @@ public class RegleCommission implements Serializable {
         this.typeMontant = typeMontant;
     }
 
+    public TypeCommission getTypeCommission() {
+        return typeCommission;
+    }
+
+    public RegleCommission typeCommission(TypeCommission typeCommission) {
+        this.typeCommission = typeCommission;
+        return this;
+    }
+
+    public void setTypeCommission(TypeCommission typeCommission) {
+        this.typeCommission = typeCommission;
+    }
+
     public Double getMontantregle() {
         return montantregle;
     }
@@ -135,6 +154,7 @@ public class RegleCommission implements Serializable {
             ", minCA=" + getMinCA() +
             ", maxCa=" + getMaxCa() +
             ", typeMontant='" + getTypeMontant() + "'" +
+            ", typeCommission='" + getTypeCommission() + "'" +
             ", montantregle=" + getMontantregle() +
             "}";
     }

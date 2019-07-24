@@ -48,7 +48,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20190724111308",
+    "changelogDate": "20190724112933",
     "entityTableName": "transaction",
     "dto": "no",
     "pagination": "no",

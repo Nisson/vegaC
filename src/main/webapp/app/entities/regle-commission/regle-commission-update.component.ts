@@ -24,6 +24,7 @@ export class RegleCommissionUpdateComponent implements OnInit {
     minCA: [],
     maxCa: [],
     typeMontant: [],
+    typeCommission: [],
     montantregle: [],
     contrat: []
   });
@@ -56,6 +57,7 @@ export class RegleCommissionUpdateComponent implements OnInit {
       minCA: regleCommission.minCA,
       maxCa: regleCommission.maxCa,
       typeMontant: regleCommission.typeMontant,
+      typeCommission: regleCommission.typeCommission,
       montantregle: regleCommission.montantregle,
       contrat: regleCommission.contrat
     });
@@ -82,6 +84,7 @@ export class RegleCommissionUpdateComponent implements OnInit {
       minCA: this.editForm.get(['minCA']).value,
       maxCa: this.editForm.get(['maxCa']).value,
       typeMontant: this.editForm.get(['typeMontant']).value,
+      typeCommission: this.editForm.get(['typeCommission']).value,
       montantregle: this.editForm.get(['montantregle']).value,
       contrat: this.editForm.get(['contrat']).value
     };

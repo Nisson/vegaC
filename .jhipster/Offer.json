@@ -30,7 +30,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20190724111309",
+    "changelogDate": "20190724112934",
     "entityTableName": "offer",
     "dto": "no",
     "pagination": "no",

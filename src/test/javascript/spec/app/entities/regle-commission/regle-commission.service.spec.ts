@@ -5,7 +5,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 import { RegleCommissionService } from 'app/entities/regle-commission/regle-commission.service';
-import { IRegleCommission, RegleCommission, TypeMontant } from 'app/shared/model/regle-commission.model';
+import { IRegleCommission, RegleCommission, TypeMontant, TypeCommission } from 'app/shared/model/regle-commission.model';
 
 describe('Service Tests', () => {
   describe('RegleCommission Service', () => {
@@ -23,7 +23,7 @@ describe('Service Tests', () => {
       service = injector.get(RegleCommissionService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new RegleCommission(0, 0, 0, TypeMontant.POURCENTAGE, 0);
+      elemDefault = new RegleCommission(0, 0, 0, TypeMontant.POURCENTAGE, TypeCommission.FORFAITAIREPARTRANSACTION, 0);
     });
 
     describe('Service methods', () => {
@@ -62,6 +62,7 @@ describe('Service Tests', () => {
             minCA: 1,
             maxCa: 1,
             typeMontant: 'BBBBBB',
+            typeCommission: 'BBBBBB',
             montantregle: 1
           },
           elemDefault
@@ -83,6 +84,7 @@ describe('Service Tests', () => {
             minCA: 1,
             maxCa: 1,
             typeMontant: 'BBBBBB',
+            typeCommission: 'BBBBBB',
             montantregle: 1
           },
           elemDefault
