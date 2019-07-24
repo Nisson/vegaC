@@ -7,6 +7,7 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "users": "Users",
         "regleCommission": "Regle Commission",
         "contrat": "Contrat",
         "caEasylink": "CA Easylink",
@@ -14,7 +15,6 @@
         "offer": "Offer",
         "amicale": "Amicale",
         "provider": "Provider",
-        "users": "Users",
         "convention": "Convention",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },

@@ -5,6 +5,10 @@ import { RouterModule } from '@angular/router';
   imports: [
     RouterModule.forChild([
       {
+        path: 'users',
+        loadChildren: './users/users.module#VegaCUsersModule'
+      },
+      {
         path: 'regle-commission',
         loadChildren: './regle-commission/regle-commission.module#VegaCRegleCommissionModule'
       },
@@ -31,10 +35,6 @@ import { RouterModule } from '@angular/router';
       {
         path: 'provider',
         loadChildren: './provider/provider.module#VegaCProviderModule'
-      },
-      {
-        path: 'users',
-        loadChildren: './users/users.module#VegaCUsersModule'
       },
       {
         path: 'convention',
