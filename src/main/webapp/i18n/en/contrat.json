@@ -1,0 +1,31 @@
+{
+  "vegaCApp": {
+    "contrat": {
+      "home": {
+        "title": "Contrats",
+        "createLabel": "Create a new Contrat",
+        "createOrEditLabel": "Create or edit a Contrat",
+        "notFound": "No Contrat found"
+      },
+      "created": "A new Contrat is created with identifier {{ param }}",
+      "updated": "A Contrat is updated with identifier {{ param }}",
+      "deleted": "A Contrat is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Contrat {{ id }}?"
+      },
+      "detail": {
+        "title": "Contrat"
+      },
+      "datedeb": "Datedeb",
+      "datefin": "Datefin",
+      "typePeriode": "Type Periode",
+      "typeCommission": "Type Commission",
+      "typeMontant": "Type Montant",
+      "montantCommission": "Montant Commission",
+      "parPalier": "Par Palier",
+      "convention": "Convention",
+      "cAEasylink": "C A Easylink",
+      "regleCommission": "Regle Commission"
+    }
+  }
+}

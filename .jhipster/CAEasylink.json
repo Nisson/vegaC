@@ -1,0 +1,31 @@
+{
+    "name": "CAEasylink",
+    "fields": [
+        {
+            "fieldName": "gain",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "typePeriode",
+            "fieldType": "TypePeriode",
+            "fieldValues": "JOURNALIERE,HEBDOMADAIRE,MENSUELLE,TRIMESTRIELLE,SEMESTRIELLE,ANNUELLE"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "contrat",
+            "otherEntityName": "contrat",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190724160525",
+    "entityTableName": "ca_easylink",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

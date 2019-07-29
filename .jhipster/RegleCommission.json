@@ -1,0 +1,45 @@
+{
+    "name": "RegleCommission",
+    "fields": [
+        {
+            "fieldName": "minCA",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "maxCa",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "typeMontant",
+            "fieldType": "TypeMontant",
+            "fieldValues": "POURCENTAGE,DT"
+        },
+        {
+            "fieldName": "montantregle",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "typeCommission",
+            "fieldType": "TypeCommission",
+            "fieldValues": "FORFAITAIREPARTRANSACTION,FORFAITAIREPARPERIODE,POURCENTAGECA"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "contrat",
+            "otherEntityRelationshipName": "regleCommission",
+            "relationshipName": "contrat",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190724160523",
+    "entityTableName": "regle_commission",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

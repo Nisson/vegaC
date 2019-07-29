@@ -1,0 +1,27 @@
+{
+  "vegaCApp": {
+    "regleCommission": {
+      "home": {
+        "title": "Regle Commissions",
+        "createLabel": "Create a new Regle Commission",
+        "createOrEditLabel": "Create or edit a Regle Commission",
+        "notFound": "No Regle Commission found"
+      },
+      "created": "A new Regle Commission is created with identifier {{ param }}",
+      "updated": "A Regle Commission is updated with identifier {{ param }}",
+      "deleted": "A Regle Commission is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Regle Commission {{ id }}?"
+      },
+      "detail": {
+        "title": "Regle Commission"
+      },
+      "minCA": "Min CA",
+      "maxCa": "Max Ca",
+      "typeMontant": "Type Montant",
+      "montantregle": "Montantregle",
+      "typeCommission": "Type Commission",
+      "contrat": "Contrat"
+    }
+  }
+}

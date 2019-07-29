@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-offer-heading" jhiTranslate="vegaCApp.offer.home.createOrEditLabel">Create or edit a Offer</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.offer.title" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                           formControlName="title"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.offer.data" for="field_data">Data</label>
+                    <input type="number" class="form-control" name="data" id="field_data"
+                           formControlName="data"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.offer.discount" for="field_discount">Discount</label>
+                    <input type="number" class="form-control" name="discount" id="field_discount"
+                           formControlName="discount"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.offer.maxoffer" for="field_maxoffer">Maxoffer</label>
+                    <input type="number" class="form-control" name="maxoffer" id="field_maxoffer"
+                           formControlName="maxoffer"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.offer.priceoffer" for="field_priceoffer">Priceoffer</label>
+                    <input type="number" class="form-control" name="priceoffer" id="field_priceoffer"
+                           formControlName="priceoffer"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.offer.transaction" for="field_transaction">Transaction</label>
+                    <select class="form-control" id="field_transaction" name="transaction" formControlName="transaction">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="transactionOption.id === editForm.get('transaction').value?.id ? editForm.get('transaction').value : transactionOption" *ngFor="let transactionOption of transactions; trackBy: trackTransactionById">{{transactionOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
