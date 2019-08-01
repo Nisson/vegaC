@@ -20,10 +20,6 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="type_periode" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="contrat_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -53,7 +49,6 @@
                   tableName="ca_easylink">
             <column name="id" type="numeric"/>
             <column name="gain" type="numeric"/>
-            <column name="type_periode" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

@@ -5,8 +5,6 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 
-import com.veganet.api.domain.enumeration.TypePeriode;
-
 /**
  * A CAEasylink.
  */
@@ -22,10 +20,6 @@ public class CAEasylink implements Serializable {
 
     @Column(name = "gain")
     private Double gain;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type_periode")
-    private TypePeriode typePeriode;
 
     @ManyToOne
     @JsonIgnoreProperties("cAEasylinks")
@@ -51,19 +45,6 @@ public class CAEasylink implements Serializable {
 
     public void setGain(Double gain) {
         this.gain = gain;
-    }
-
-    public TypePeriode getTypePeriode() {
-        return typePeriode;
-    }
-
-    public CAEasylink typePeriode(TypePeriode typePeriode) {
-        this.typePeriode = typePeriode;
-        return this;
-    }
-
-    public void setTypePeriode(TypePeriode typePeriode) {
-        this.typePeriode = typePeriode;
     }
 
     public Contrat getContrat() {
@@ -101,7 +82,6 @@ public class CAEasylink implements Serializable {
         return "CAEasylink{" +
             "id=" + getId() +
             ", gain=" + getGain() +
-            ", typePeriode='" + getTypePeriode() + "'" +
             "}";
     }
 }

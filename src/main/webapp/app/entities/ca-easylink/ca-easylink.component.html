@@ -19,7 +19,6 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="vegaCApp.cAEasylink.gain">Gain</span></th>
-            <th><span jhiTranslate="vegaCApp.cAEasylink.typePeriode">Type Periode</span></th>
             <th><span jhiTranslate="vegaCApp.cAEasylink.contrat">Contrat</span></th>
             <th></th>
             </tr>
@@ -28,7 +27,6 @@
             <tr *ngFor="let cAEasylink of cAEasylinks ;trackBy: trackId">
                 <td><a [routerLink]="['/ca-easylink', cAEasylink.id, 'view' ]">{{cAEasylink.id}}</a></td>
                 <td>{{cAEasylink.gain}}</td>
-                <td jhiTranslate="{{'vegaCApp.TypePeriode.' + cAEasylink.typePeriode}}">{{cAEasylink.typePeriode}}</td>
                 <td>
                     <div *ngIf="cAEasylink.contrat">
                         <a [routerLink]="['../contrat', cAEasylink.contrat?.id, 'view' ]" >{{cAEasylink.contrat?.id}}</a>

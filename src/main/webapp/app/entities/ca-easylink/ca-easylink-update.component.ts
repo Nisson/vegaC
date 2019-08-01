@@ -22,7 +22,6 @@ export class CAEasylinkUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     gain: [],
-    typePeriode: [],
     contrat: []
   });
 
@@ -52,7 +51,6 @@ export class CAEasylinkUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: cAEasylink.id,
       gain: cAEasylink.gain,
-      typePeriode: cAEasylink.typePeriode,
       contrat: cAEasylink.contrat
     });
   }
@@ -76,7 +74,6 @@ export class CAEasylinkUpdateComponent implements OnInit {
       ...new CAEasylink(),
       id: this.editForm.get(['id']).value,
       gain: this.editForm.get(['gain']).value,
-      typePeriode: this.editForm.get(['typePeriode']).value,
       contrat: this.editForm.get(['contrat']).value
     };
   }
