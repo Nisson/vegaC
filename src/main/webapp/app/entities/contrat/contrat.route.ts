@@ -29,6 +29,11 @@ export class ContratResolve implements Resolve<IContrat> {
 }
 
 export const contratRoute: Routes = [
+
+  {
+    path: 'regle-commission',
+    loadChildren: './regle-commission/regle-commission.module#VegaCRegleCommissionModule'
+  },
   {
     path: '',
     component: ContratComponent,
@@ -38,6 +43,7 @@ export const contratRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   },
+
   {
     path: ':id/view',
     component: ContratDetailComponent,

@@ -12,7 +12,8 @@ import {
   RegleCommissionDeleteDialogComponent,
   regleCommissionRoute,
   regleCommissionPopupRoute
-} from './';
+} from './index';
+
 
 const ENTITY_STATES = [...regleCommissionRoute, ...regleCommissionPopupRoute];
 
@@ -31,7 +32,10 @@ const ENTITY_STATES = [...regleCommissionRoute, ...regleCommissionPopupRoute];
     RegleCommissionDeleteDialogComponent,
     RegleCommissionDeletePopupComponent
   ],
-  providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
+  providers: [{provide: JhiLanguageService, useClass: JhiLanguageService}],
+  exports: [
+    RegleCommissionUpdateComponent
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class VegaCRegleCommissionModule {

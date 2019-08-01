@@ -4,10 +4,7 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
     RouterModule.forChild([
-      {
-        path: 'regle-commission',
-        loadChildren: './regle-commission/regle-commission.module#VegaCRegleCommissionModule'
-      },
+
       {
         path: 'contrat',
         loadChildren: './contrat/contrat.module#VegaCContratModule'

@@ -80,7 +80,6 @@ export class RegleCommissionUpdateComponent implements OnInit {
   private createFromForm(): IRegleCommission {
     return {
       ...new RegleCommission(),
-      id: this.editForm.get(['id']).value,
       minCA: this.editForm.get(['minCA']).value,
       maxCa: this.editForm.get(['maxCa']).value,
       typeMontant: this.editForm.get(['typeMontant']).value,

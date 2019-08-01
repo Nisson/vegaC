@@ -13,11 +13,12 @@ import {
   contratRoute,
   contratPopupRoute
 } from './';
+import {VegaCRegleCommissionModule} from "app/entities/contrat/regle-commission/regle-commission.module";
 
 const ENTITY_STATES = [...contratRoute, ...contratPopupRoute];
 
 @NgModule({
-  imports: [VegaCSharedModule, RouterModule.forChild(ENTITY_STATES)],
+  imports: [VegaCRegleCommissionModule,VegaCSharedModule, RouterModule.forChild(ENTITY_STATES)],
   declarations: [
     ContratComponent,
     ContratDetailComponent,

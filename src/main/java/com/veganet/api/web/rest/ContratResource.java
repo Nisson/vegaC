@@ -1,26 +1,31 @@
 package com.veganet.api.web.rest;
 
 import com.veganet.api.domain.Contrat;
+import com.veganet.api.domain.RegleCommission;
 import com.veganet.api.repository.ContratRepository;
+import com.veganet.api.repository.RegleCommissionRepository;
 import com.veganet.api.web.rest.errors.BadRequestAlertException;
-
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
 /**
  * REST controller for managing {@link com.veganet.api.domain.Contrat}.
  */
+
 @RestController
 @RequestMapping("/api")
 public class ContratResource {
@@ -33,9 +38,11 @@ public class ContratResource {
     private String applicationName;
 
     private final ContratRepository contratRepository;
+    private  RegleCommissionRepository regleRepository;
 
-    public ContratResource(ContratRepository contratRepository) {
+    public ContratResource(ContratRepository contratRepository,RegleCommissionRepository regleRepository) {
         this.contratRepository = contratRepository;
+        this.regleRepository=regleRepository;
     }
 
     /**
@@ -51,7 +58,14 @@ public class ContratResource {
         if (contrat.getId() != null) {
             throw new BadRequestAlertException("A new contrat cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+        List<RegleCommission> regleCommissions = regleRepository.saveAll(contrat.getRegleCommissions());
+        System.out.println("ICI"+regleCommissions);
+
         Contrat result = contratRepository.save(contrat);
+        for(RegleCommission r:regleCommissions)
+            r.setContrat(result);
+        regleRepository.saveAll(regleCommissions);
         return ResponseEntity.created(new URI("/api/contrats/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { FormBuilder, Validators } from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
@@ -11,17 +11,17 @@ import { ContratService } from './contrat.service';
 import { IConvention } from 'app/shared/model/convention.model';
 import { ConventionService } from 'app/entities/convention';
 
+
 @Component({
   selector: 'jhi-contrat-update',
   templateUrl: './contrat-update.component.html'
 })
 export class ContratUpdateComponent implements OnInit {
   isSaving: boolean;
-
   conventions: IConvention[];
   datedebDp: any;
   datefinDp: any;
-
+  status:Boolean=false
   editForm = this.fb.group({
     id: [],
     datedeb: [],
@@ -31,7 +31,8 @@ export class ContratUpdateComponent implements OnInit {
     typeMontant: [],
     montantCommission: [],
     parPalier: [],
-    convention: []
+    convention: [],
+    regles:this.fb.array([])
   });
 
   constructor(
@@ -41,8 +42,22 @@ export class ContratUpdateComponent implements OnInit {
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
+  get regleForms(){
+    return this.editForm.get('regles') as FormArray;
+  }
 
+  addRegle(){
+  const regleCommission =this.fb.group({
+    minCA: [],
+    maxCa: [],
+    typeMontant: [],
+    montantregle: [],
+    typeCommission: [],
+  });
+  this.regleForms.push(regleCommission);
+}
   ngOnInit() {
+
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ contrat }) => {
       this.updateForm(contrat);
@@ -88,6 +103,10 @@ export class ContratUpdateComponent implements OnInit {
     });
   }
 
+  changeStatus(){
+
+  }
+
   previousState() {
     window.history.back();
   }
@@ -113,7 +132,8 @@ export class ContratUpdateComponent implements OnInit {
       typeMontant: this.editForm.get(['typeMontant']).value,
       montantCommission: this.editForm.get(['montantCommission']).value,
       parPalier: this.editForm.get(['parPalier']).value,
-      convention: this.editForm.get(['convention']).value
+      convention: this.editForm.get(['convention']).value,
+      regleCommissions:this.editForm.get(['regles']).value
     };
   }
 

@@ -30,7 +30,7 @@ export class RegleCommissionResolve implements Resolve<IRegleCommission> {
 
 export const regleCommissionRoute: Routes = [
   {
-    path: '',
+    path: 's',
     component: RegleCommissionComponent,
     data: {
       authorities: ['ROLE_USER'],
@@ -51,7 +51,7 @@ export const regleCommissionRoute: Routes = [
     canActivate: [UserRouteAccessService]
   },
   {
-    path: 'new',
+    path: 'newR',
     component: RegleCommissionUpdateComponent,
     resolve: {
       regleCommission: RegleCommissionResolve

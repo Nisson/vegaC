@@ -10,6 +10,13 @@
                         readonly />
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="vegaCApp.contrat.convention" for="field_convention">Convention</label>
+                    <select class="form-control" id="field_convention" name="convention" formControlName="convention">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="conventionOption.id === editForm.get('convention').value?.id ? editForm.get('convention').value : conventionOption" *ngFor="let conventionOption of conventions; trackBy: trackConventionById">{{conventionOption.titleconvention}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="vegaCApp.contrat.datedeb" for="field_datedeb">Datedeb</label>
                     <div class="input-group">
                         <input id="field_datedeb" type="text" class="form-control" name="datedeb" ngbDatepicker  #datedebDp="ngbDatepicker" formControlName="datedeb"/>
@@ -38,40 +45,80 @@
                         <option value="ANNUELLE">{{'vegaCApp.TypePeriode.ANNUELLE' | translate}}</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="vegaCApp.contrat.typeCommission" for="field_typeCommission">Type Commission</label>
-                    <select class="form-control" name="typeCommission" formControlName="typeCommission" id="field_typeCommission">
-                        <option value="FORFAITAIREPARTRANSACTION">{{'vegaCApp.TypeCommission.FORFAITAIREPARTRANSACTION' | translate}}</option>
-                        <option value="FORFAITAIREPARPERIODE">{{'vegaCApp.TypeCommission.FORFAITAIREPARPERIODE' | translate}}</option>
-                        <option value="POURCENTAGECA">{{'vegaCApp.TypeCommission.POURCENTAGECA' | translate}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="vegaCApp.contrat.typeMontant" for="field_typeMontant">Type Montant</label>
-                    <select class="form-control" name="typeMontant" formControlName="typeMontant" id="field_typeMontant">
-                        <option value="POURCENTAGE">{{'vegaCApp.TypeMontant.POURCENTAGE' | translate}}</option>
-                        <option value="DT">{{'vegaCApp.TypeMontant.DT' | translate}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="vegaCApp.contrat.montantCommission" for="field_montantCommission">Montant Commission</label>
-                    <input type="number" class="form-control" name="montantCommission" id="field_montantCommission"
-                           formControlName="montantCommission"/>
-                </div>
+
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="vegaCApp.contrat.parPalier" for="field_parPalier">Par Palier</label>
                     <input type="checkbox" class="form-control" name="parPalier" id="field_parPalier"
                            formControlName="parPalier"/>
                 </div>
+                <div class="notPalier" [hidden]="editForm.get('parPalier').value">
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="vegaCApp.contrat.convention" for="field_convention">Convention</label>
-                    <select class="form-control" id="field_convention" name="convention" formControlName="convention">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="conventionOption.id === editForm.get('convention').value?.id ? editForm.get('convention').value : conventionOption" *ngFor="let conventionOption of conventions; trackBy: trackConventionById">{{conventionOption.id}}</option>
-                    </select>
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="vegaCApp.contrat.typeCommission" for="field_typeCommission">Type Commission</label>
+                        <select class="form-control" name="typeCommission" formControlName="typeCommission" id="field_typeCommission">
+                            <option value="FORFAITAIREPARTRANSACTION">{{'vegaCApp.TypeCommission.FORFAITAIREPARTRANSACTION' | translate}}</option>
+                            <option value="FORFAITAIREPARPERIODE">{{'vegaCApp.TypeCommission.FORFAITAIREPARPERIODE' | translate}}</option>
+                            <option value="POURCENTAGECA">{{'vegaCApp.TypeCommission.POURCENTAGECA' | translate}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="vegaCApp.contrat.typeMontant" for="field_typeMontant">Type Montant</label>
+                        <select class="form-control" name="typeMontant" formControlName="typeMontant" id="field_typeMontant">
+                            <option value="POURCENTAGE">{{'vegaCApp.TypeMontant.POURCENTAGE' | translate}}</option>
+                            <option value="DT">{{'vegaCApp.TypeMontant.DT' | translate}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="vegaCApp.contrat.montantCommission" for="field_montantCommission">Montant Commission</label>
+                        <input type="number" class="form-control" name="montantCommission" id="field_montantCommission"
+                               formControlName="montantCommission"/>
+                    </div>
+
                 </div>
+                </div>
+            <div formArrayName="regles" [hidden]="!editForm.get('parPalier').value">
+                <div *ngFor="let regle of regleForms.controls; let i=index" [formGroupName]="i" >
+
+                    <h2 id="jhi-regle-commission-heading" jhiTranslate="vegaCApp.regleCommission.home.createLabel">Create a Regle Commission</h2>
+                    <div>
+                        <jhi-alert-error></jhi-alert-error>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="vegaCApp.regleCommission.minCA" for="field_minCA">Min CA</label>
+                            <input type="number" class="form-control" name="minCA" id="field_minCA"
+                                   formControlName="minCA"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="vegaCApp.regleCommission.maxCa" for="field_maxCa">Max Ca</label>
+                            <input type="number" class="form-control" name="maxCa" id="field_maxCa"
+                                   formControlName="maxCa"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="vegaCApp.regleCommission.typeMontant" for="field_typeMontant">Type Montant</label>
+                            <select class="form-control" name="typeMontant" formControlName="typeMontant" >
+                                <option value="POURCENTAGE">{{'vegaCApp.TypeMontant.POURCENTAGE' | translate}}</option>
+                                <option value="DT">{{'vegaCApp.TypeMontant.DT' | translate}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="vegaCApp.regleCommission.montantregle" for="field_montantregle">Montantregle</label>
+                            <input type="number" class="form-control" name="montantregle" id="field_montantregle"
+                                   formControlName="montantregle"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="vegaCApp.regleCommission.typeCommission" for="field_typeCommission">Type Commission</label>
+                            <select class="form-control" name="typeCommission" formControlName="typeCommission" >
+                                <option value="FORFAITAIREPARTRANSACTION">{{'vegaCApp.TypeCommission.FORFAITAIREPARTRANSACTION' | translate}}</option>
+                                <option value="FORFAITAIREPARPERIODE">{{'vegaCApp.TypeCommission.FORFAITAIREPARPERIODE' | translate}}</option>
+                                <option value="POURCENTAGECA">{{'vegaCApp.TypeCommission.POURCENTAGECA' | translate}}</option>
+                            </select>
+                        </div>
+                    </div></div>
             </div>
+            <button type="button" class="btn btn-success"(click)="addRegle()" [hidden]="!editForm.get('parPalier').value">Ajouter une Régle</button>
+
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
@@ -80,6 +127,8 @@
                     <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>
+
         </form>
+
     </div>
 </div>
