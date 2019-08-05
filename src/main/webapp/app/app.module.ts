@@ -18,6 +18,7 @@ import { VegaCHomeModule } from './home/home.module';
 import { VegaCAccountModule } from './account/account.module';
 import { VegaCEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
+import { VegaCprimengModule } from './primeng/primeng.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
@@ -36,6 +37,7 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
     VegaCCoreModule,
     VegaCHomeModule,
     VegaCAccountModule,
+    VegaCprimengModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     VegaCEntityModule,
     VegaCAppRoutingModule
