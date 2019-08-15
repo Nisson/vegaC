@@ -2,6 +2,7 @@ package com.veganet.api.web.rest;
 
 import com.veganet.api.domain.Contrat;
 import com.veganet.api.domain.RegleCommission;
+import com.veganet.api.domain.Transaction;
 import com.veganet.api.repository.ContratRepository;
 import com.veganet.api.repository.RegleCommissionRepository;
 import com.veganet.api.web.rest.errors.BadRequestAlertException;
@@ -16,10 +17,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -128,4 +132,214 @@ public class ContratResource {
         contratRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
+     
+    
+    
+    //////////////////////////////////////////////////////////////////
+    @GetMapping("/contrat/{id}")
+    public List<Contrat> getListContrat (@PathVariable Long id){
+    	
+    	List<Contrat> contracts =contratRepository.findByProvider(id) ;
+    	return contracts;
+    	}
+    ///////////////////////////////////////////////////////////////
+    @RequestMapping(path="/contratByDate/{datedeb}/{datefin}/{id}", method = RequestMethod.GET)
+    public List<Contrat> getListContratetProviderByDate(@PathVariable String datedeb,@PathVariable String datefin , @PathVariable Long id)
+    {
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-");
+    	System.out.println(datedeb);
+    	LocalDate datedebb= LocalDate.parse(datedeb,formatter);
+    	LocalDate datefinn= LocalDate.parse(datefin,formatter);
+    	List<Contrat> contracts= contratRepository.findByDateDebDateFinByProvider(datedebb, datefinn, id);
+    	System.out.println(contracts.get(0).getConvention().getTransactions());
+    /*	Double s = (double) 0;
+    	for (Transaction t:contracts.get(0).getConvention().getTransactions())
+    	{
+    	s= s+t.getTotalpaid();
+    	System.out.println(s);
+    	
+    	}*/
+		return contracts;
+    }
+    
+    ///////////////////////////////////////////////////////////
+    @RequestMapping(path="/contratByDate/{datedeb}/{datefin}", method = RequestMethod.GET)
+    public List<Contrat> getListContratByDate(@PathVariable String datedeb,@PathVariable String datefin )
+    {
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    	System.out.println(datedeb);
+    	LocalDate datedebb= LocalDate.parse(datedeb,formatter);
+    	LocalDate datefinn= LocalDate.parse(datefin,formatter);
+    	List<Contrat> contracts= contratRepository.findByDateDebDateFin(datedebb, datefinn);
+    	System.out.println(contracts.get(0).getConvention().getTransactions());
+    
+    	
+    	
+    	return contracts; }
+		
+    
+    
+    //////////////////////////////////////////////////////////////////
+    
+    @RequestMapping(path="/gainByDate/{datedeb}/{datefin}", method = RequestMethod.GET)
+    public void getGainByDate(@PathVariable String datedeb,@PathVariable String datefin)
+    {
+    	
+    	List<Contrat> contracts=getListContratByDate(datedeb,datefin);
+    	
+    	Map<LocalDate,Double> mymap=new HashMap<LocalDate,Double>() ;
+    	Double CA=(double) 0;
+    	for(int i=0;i<contracts.size();i++)
+    	{
+    		if(contracts.get(i).getTypeCommission().equals("FORFAITAIREPARPERIODE"))
+    		{
+    		if(contracts.get(i).getTypePeriode().equals("MENSUELLE"))
+    		{
+    			LocalDate datecontrat=contracts.get(i).getDatedeb();
+    			
+    			while(datecontrat.isBefore(contracts.get(i).getDatefin()))
+    			{
+    				mymap.put(datecontrat,contracts.get(i).getMontantCommission());
+    				datecontrat.plusMonths(1);
+    				
+    			}
+    		}
+    		if(contracts.get(i).getTypePeriode().equals("TRIMESTRIELLE"))
+    		{
+
+    			LocalDate datecontrat=contracts.get(i).getDatedeb();
+    			
+    			while(datecontrat.isBefore(contracts.get(i).getDatefin()))
+    			{
+    				mymap.put(datecontrat,contracts.get(i).getMontantCommission());
+    				datecontrat.plusMonths(3);
+    				
+    			}
+    		}
+    		if(contracts.get(i).getTypePeriode().equals("SEMESTRIELLE"))
+    		{
+
+    			LocalDate datecontrat=contracts.get(i).getDatedeb();
+    			
+    			while(datecontrat.isBefore(contracts.get(i).getDatefin()))
+    			{
+    				mymap.put(datecontrat,contracts.get(i).getMontantCommission());
+    				datecontrat.plusMonths(6);
+    				
+    			}
+    		}
+    		if(contracts.get(i).getTypePeriode().equals("ANNUELLE"))
+    		{
+
+    			LocalDate datecontrat=contracts.get(i).getDatedeb();
+    			
+    			while(datecontrat.isBefore(contracts.get(i).getDatefin()))
+    			{
+    				mymap.put(datecontrat,contracts.get(i).getMontantCommission());
+    				datecontrat.plusYears(1);
+    				
+    			}
+    		}
+    	}
+    		if(contracts.get(i).getTypeCommission().equals("FORFAITAIREPARTRANSACTION"))
+    		{
+    			
+    			if(contracts.get(i).getTypePeriode().equals("MENSUELLE"))
+    			{
+    				LocalDate datecontrat=contracts.get(i).getDatedeb();
+    				List<Transaction> transactions=(List<Transaction>) contracts.get(i).getConvention().getTransactions();
+    			
+    				while(datecontrat.isBefore(contracts.get(i).getDatefin()))
+    				{   
+    					for(int k=0;k<transactions.size();k++)
+    					{
+    				
+    						if(transactions.get(k).getEnddate().isBefore(contracts.get(i).getDatefin()))
+    						{	
+    							CA=CA+contracts.get(i).getMontantCommission()*transactions.size();
+    							mymap.put(datecontrat,CA);
+    							datecontrat.plusMonths(1);
+    				
+    					
+    						}
+    				}
+    			}
+    		}
+    			if(contracts.get(i).getTypePeriode().equals("TRIMESTRIELLE"))
+    			{
+    				LocalDate datecontrat=contracts.get(i).getDatedeb();
+    				List<Transaction> transactions=(List<Transaction>) contracts.get(i).getConvention().getTransactions();
+    			
+    				while(datecontrat.isBefore(contracts.get(i).getDatefin()))
+    				{   
+    					for(int k=0;k<transactions.size();k++)
+    					{
+    				
+    						if(transactions.get(k).getEnddate().isBefore(contracts.get(i).getDatefin()))
+    						{	
+    							CA=contracts.get(i).getMontantCommission()*transactions.size();
+    							mymap.put(datecontrat,CA);
+    							datecontrat.plusMonths(3);
+    				
+    					
+    						}
+    				}
+    			}
+    		}
+    			if(contracts.get(i).getTypePeriode().equals("SEMESTRIELLE"))
+    			{
+    				LocalDate datecontrat=contracts.get(i).getDatedeb();
+    				List<Transaction> transactions=(List<Transaction>) contracts.get(i).getConvention().getTransactions();
+    			
+    				while(datecontrat.isBefore(contracts.get(i).getDatefin()))
+    				{   
+    					for(int k=0;k<transactions.size();k++)
+    					{
+    				
+    						if(transactions.get(k).getEnddate().isBefore(contracts.get(i).getDatefin()))
+    						{	
+    							CA=contracts.get(i).getMontantCommission()*transactions.size();
+    							mymap.put(datecontrat,CA);
+    							datecontrat.plusMonths(6);
+    				
+    					
+    						}
+    				}
+    			}
+    		}
+    			if(contracts.get(i).getTypePeriode().equals("ANNUELLE"))
+    			{
+    				LocalDate datecontrat=contracts.get(i).getDatedeb();
+    				List<Transaction> transactions=(List<Transaction>) contracts.get(i).getConvention().getTransactions();
+    			
+    				while(datecontrat.isBefore(contracts.get(i).getDatefin()))
+    				{   
+    					for(int k=0;k<transactions.size();k++)
+    					{
+    				
+    						if(transactions.get(k).getEnddate().isBefore(contracts.get(i).getDatefin()))
+    						{	
+    							CA=contracts.get(i).getMontantCommission()*transactions.size();
+    							mymap.put(datecontrat,CA);
+    							datecontrat.plusYears(1);
+    				
+    					
+    						}
+    				}
+    			}
+    		}
+    	}
+    }
+    	
+    	
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
